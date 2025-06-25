@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project – ERP Proposal & Presentation | Lahvada Laundromat</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Custom styling for image containers if needed */
+        .brochure-image-container {
+            display: flex;
+            flex-wrap: wrap; /* Allows images to wrap on smaller screens */
+            gap: 1rem; /* Space between images */
+            justify-content: center;
+        }
+        .brochure-image {
+            width: 100%; /* Default to full width for small screens */
+            height: auto;
+            max-width: 600px; /* Max width for individual images */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-md */
+            border: 1px solid #e2e8f0; /* border-gray-300 */
+        }
+        /* Responsive adjustments for multiple images */
+        @media (min-width: 768px) {
+            .brochure-image.panel {
+                width: calc(33.33% - 1rem); /* Roughly one-third width minus gap for 3 columns */
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+    <!-- Main content container -->
+    <div class="max-w-4xl mx-auto p-8 bg-white rounded-xl shadow-lg border border-gray-200 w-full">
+
+        <!-- Section Title -->
+        <h1 class="text-4xl font-extrabold text-center text-blue-800 mb-8 tracking-tight">
+            Final Project – ERP Proposal & Presentation
+        </h1>
+
+        <!-- New Section: Student Information - Moved to Top -->
+        <div class="mb-10 p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg border border-blue-200 text-gray-700">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center">
+                About the Presenter
+            </h2>
+            <div class="flex flex-col md:flex-row items-center md:items-center gap-6">
+                <div class="flex-shrink-0 md:mb-0 mb-4">
+                    <!-- Placeholder for your picture -->
+                    <img src="pic.jpg" alt="Presenter's Photo" class="w-40 h-40 rounded-full object-cover shadow-lg border-4 border-blue-300 transform transition-transform duration-300 hover:scale-105">
+                </div>
+                <div class="text-left w-full md:pl-4">
+                    <p class="text-xl font-semibold text-gray-900 mb-2">
+                        <strong class="text-blue-700">Name:</strong> Ethan James O. Zogg
+                    </p>
+                    <p class="text-lg text-gray-800 mb-2">
+                        <strong class="text-blue-700">Course:</strong> IS136P
+                    </p>
+                    <p class="text-lg text-gray-800 mb-2">
+                        <strong class="text-blue-700">Section:</strong> A323
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Description with Dedicated Sections -->
+        <div class="mb-10 text-gray-700 leading-relaxed text-lg bg-blue-50 p-6 rounded-lg border border-blue-200">
+            <h3 class="text-2xl font-bold text-blue-700 mb-2">Business Overview & Original Project Summary</h3>
+            <p class="mb-6">
+                This digital brochure presents the ERP proposal for Lahvada Laundromat, a thriving laundry service located in Davao City. Our previous system design from the Project Management course primarily focused on automating Lahvada's existing manual transaction recording, sales reporting, and employee attendance tracking to enhance their operational efficiency.
+                <img src="shop.jpg" alt="Lahvada Laundromat Exterior" class="brochure-image mt-4">
+            </p>
+
+            <h3 class="text-2xl font-bold text-blue-700 mb-2 mt-6">ERP System Chosen</h3>
+            <p class="mb-6">
+                For this proposal, we have chosen Odoo as the Enterprise Resource Planning (ERP) system. Odoo offers a fully integrated suite of modules perfectly suited to the needs of a growing service business.
+                <img src="odoo.png" alt="Odoo ERP Interface Screenshot" class="brochure-image mt-4">
+            </p>
+
+            <h3 class="text-2xl font-bold text-blue-700 mb-2 mt-6">Purpose of This Brochure</h3>
+            <p class="mb-6">
+                The primary purpose of this brochure is to clearly demonstrate to business owners and decision-makers how embracing an ERP like Odoo can significantly enhance Lahvada Laundromat's system efficiency, provide crucial data-driven insights, and support sustainable business growth beyond our initial custom solution.
+            </p>
+
+            <h3 class="text-2xl font-bold text-blue-700 mb-2 mt-6">Key Odoo Modules Utilized</h3>
+            <ul class="list-disc list-inside mb-6 pl-4">
+                <img src="module.png" alt="Odoo Module Icons or Overview" class="brochure-image mt-4 mb-4">
+                <li class="mb-1"><strong class="text-blue-700">Odoo Point of Sale (POS)</strong>: For automated transaction recording and digital receipts.</li>
+                <li class="mb-1"><strong class="text-blue-700">Odoo Inventory</strong>: For efficient tracking of supplies and machine status.</li>
+                <li class="mb-1"><strong class="text-blue-700">Odoo Employees</strong>: For streamlined employee management and accurate attendance tracking.</li>
+                <li><strong class="text-blue-700">Odoo Accounting</strong>: For comprehensive financial reporting and real-time sales insights.</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold text-blue-700 mb-2 mt-6">Alignment with Business Needs</h3>
+            <p class="mb-2">
+                These modules are meticulously designed to replace Lahvada's current manual processes, directly addressing their need for improved data accuracy and accessibility. By providing real-time sales insights, streamlining supply management, simplifying employee records, and delivering comprehensive financial reporting, Odoo perfectly aligns with Lahvada's objectives to enhance operational efficiency and support long-term business growth.
+            </p>
+        </div>
+
+        <!-- ERP Brochure Section -->
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">
+                ERP Proposal Brochure (Tri-fold)
+            </h2>
+            <p class="text-gray-600 mb-6">
+                Please find the comprehensive proposal brochure below. It details how Odoo can streamline Lahvada Laundromat's operations.
+            </p>
+
+            <!-- Option for multiple PNGs representing brochure panels -->
+            <div class="brochure-image-container">
+                <img src="first.jpg" alt="Lahvada Laundromat ERP Brochure Panel 1" class="brochure-image">
+                <img src="second.jpg" alt="Lahvada Laundromat ERP Brochure Panel 2" class="brochure-image">
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
