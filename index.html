@@ -6,17 +6,18 @@
     <title>Ethan James O. Zogg | Developer Portfolio</title>
     <!-- Bootstrap CSS CDN (v5.3) for styling and responsiveness -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Font Awesome for Social Media Icons (used instead of inline SVG for cleaner code) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* Custom Styling for improved UI/UX */
+        /* Custom Styling for improved UI/UX and White-Card Look */
         :root {
-            /* Changing to a professional, deeper blue/indigo for a modern tech feel */
-            --primary-color: #3F51B5; 
-            --secondary-color: #7986CB; /* Lighter shade of primary for accents */
-            --dark-background: #1e1e2d; /* Near-black for a more premium look */
-            --light-background: #f4f6f9; /* Off-white for less eye strain */
+            --primary-color: #3F51B5; /* Indigo */
+            --secondary-color: #7986CB;
+            --dark-background: #1e1e2d;
+            --light-background: #f4f6f9;
             --text-color: #343a40;
-            --accent-color: #009688; /* Teal/cyan accent for the navbar brand */
+            --accent-color: #009688; /* Teal */
         }
 
         body {
@@ -24,69 +25,111 @@
             background-color: var(--light-background); 
             color: var(--text-color); 
         }
+
+        /* Container for the main white card that holds all content */
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
         
-        /* Hero Section Styling */
+        /* Hero Section - now just a part of the white container */
         .hero-section {
-            /* New, darker gradient (Indigo to Teal) */
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%); 
-            color: white;
-            padding: 10rem 0 6rem; /* More vertical padding */
-            margin-bottom: 3rem;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            /* Soft curve at the bottom for a modern break */
-            border-radius: 0 0 50px 50px; 
+            padding: 0; /* Remove hero padding as it's inside the container */
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 2rem;
         }
 
-        /* Profile Picture Placeholder Style */
+        /* Profile Photo Style */
         .profile-photo {
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            border: 8px solid rgba(255, 255, 255, 0.3); /* Light white border */
-            box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.1), 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 4px solid var(--primary-color); 
+            box-shadow: 0 0 0 8px rgba(63, 81, 181, 0.1);
             object-fit: cover;
-            margin: 0 auto;
+            margin: 0 auto 1.5rem;
             display: block;
         }
 
-        /* Project Card Hover Effect - Stronger lift for better feedback */
+        /* Social Icons */
+        .social-icons a {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Project Card Hover Effect */
         .project-card {
-            border: none;
-            border-radius: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 0.75rem;
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
             height: 100%;
         }
 
         .project-card:hover {
-            transform: translateY(-10px); 
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
-        }
-
-        .project-card .card-footer {
-            background-color: white;
-            border-top: 1px solid #dee2e6;
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         /* Section Headings */
         .section-heading {
-            font-size: 2.5rem;
-            font-weight: 800; /* Punchier font weight */
-            color: var(--primary-color);
-            margin-bottom: 3rem;
+            font-size: 2rem;
+            font-weight: 800; 
+            color: var(--dark-background);
+            margin-bottom: 2rem;
+            padding-top: 1rem;
         }
 
-        /* Custom Badge Colors */
-        .badge-tech {
-            background-color: var(--secondary-color);
-            color: white;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-            padding: 0.5em 0.75em;
-            border-radius: 0.5rem;
+        /* Tech Stack Icon Grid */
+        .tech-icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 15px;
+            margin-top: 2rem;
         }
+        .tech-icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        .tech-icon-placeholder {
+            width: 45px;
+            height: 45px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        /* Custom colors for tech icons to visually resemble logos */
+        .icon-java { color: #f89820; }
+        .icon-aws { color: #FF9900; }
+        .icon-android { color: #3DDC84; }
+        .icon-spring { color: #6db33f; }
+        .icon-csharp { color: #9b4f96; }
+        .icon-html { color: #E34F26; }
+        .icon-css { color: #1572B6; }
+        .icon-js { color: #F7DF1E; }
+        .icon-wp { color: #21759B; }
+        .icon-node { color: #339933; }
+        .icon-python { color: #3776AB; }
+        .icon-cpp { color: #00599C; }
+
+
     </style>
 </head>
 <body>
@@ -95,7 +138,6 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#home">
-                <!-- Customized Brand Name with Accent Color -->
                 <span style="color: var(--accent-color);">&lt;</span>EthanZogg<span style="color: var(--accent-color); ">/&gt;</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -116,125 +158,195 @@
             </div>
         </div>
     </nav>
+    
+    <!-- Main Portfolio Content Container (White Card) -->
+    <div class="portfolio-container">
 
-    <!-- Hero Section (Introduction and Profile Photo) -->
-    <header id="home" class="hero-section text-center text-lg-start">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Text Content (Order changes on mobile/desktop for better flow) -->
-                <div class="col-lg-8 order-lg-1 order-2 mb-5 mb-lg-0">
-                    <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">Hi, I'm Ethan James O. Zogg</h1>
-                    <p class="lead mb-5 fs-5 animate__animated animate__fadeInUp">
-                        A passionate person in **Web Technologies and AI** specializing in modern web and application development. Let's build something exceptional.
-                    </p>
-                    <a href="#projects" class="btn btn-light btn-lg rounded-pill shadow-lg fw-bold px-5 me-md-3 mb-2">Explore Projects &rarr;</a>
-                    <a href="#contact" class="btn btn-outline-light btn-lg rounded-pill shadow-lg fw-bold px-5 mb-2">Contact Me</a>
-                </div>
-                <!-- Profile Photo Placeholder (Order 1 on mobile to be seen first) -->
-                <div class="col-lg-4 order-lg-2 order-1 text-center mb-4 mb-lg-0">
-                    <!-- IMAGE PLACEHOLDER FOR FACE/PROFILE PHOTO -->
-                    <img src="linkedin.jpg" 
+        <!-- Hero Section (Matches Reference Image Layout) -->
+        <header id="home" class="hero-section">
+            <div class="row">
+                
+                <!-- Left Column: Profile Picture and Socials -->
+                <div class="col-lg-4 text-center">
+                    <img src="https://placehold.co/200x200/4CAF50/FFFFFF?text=EJ+Zogg" 
                          class="profile-photo shadow-lg" 
                          alt="Placeholder for Profile Photo - Replace this URL with your face shot!">
+                    
+                    <h5 class="fw-bold mb-3">Ethan James O. Zogg</h5>
+
+                    <div class="social-icons mb-4">
+                        <a href="https://www.linkedin.com/in/ethan-james-zogg-936325203/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/weebeejeebees" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <!-- Add other social links as desired -->
+                        <a href="#" target="_blank" title="Twitter/X"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" title="Spotify"><i class="fab fa-spotify"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Introduction and Tech Stacks -->
+                <div class="col-lg-8">
+                    <h1 class="h2 fw-bolder mb-3" style="color: var(--primary-color);">Hello World, and welcome to my portfolio!</h1>
+                    
+                    <p class="lead mb-4">
+                        I am **Ethan Zogg**, your coding enthusiast. I am passionate about **Web Technologies and AI**, specializing in modern web and application development. Below is a toolbox of technologies I have experience developing with:
+                    </p>
+
+                    <!-- Tech Stack Row 1: Core Toolbox (Matching the inspiration image layout) -->
+                    <h5 class="fw-bold mb-3" style="color: var(--accent-color);">🛠️ Core Toolbox & Frameworks</h5>
+                    <div class="tech-icon-grid">
+                        <div class="tech-icon-item">
+                            <i class="fab fa-aws tech-icon-placeholder icon-aws"></i>
+                            <span>AWS</span>
+                        </div>
+                        <div class="tech-icon-item">
+                            <i class="fab fa-android tech-icon-placeholder icon-android"></i>
+                            <span>Android</span>
+                        </div>
+                        <div class="tech-icon-item">
+                            <i class="fas fa-microchip tech-icon-placeholder icon-spring"></i>
+                            <span>Spring Boot</span>
+                        </div>
+                         <div class="tech-icon-item">
+                            <i class="fab fa-node-js tech-icon-placeholder icon-node"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="tech-icon-item">
+                            <i class="fab fa-wordpress tech-icon-placeholder icon-wp"></i>
+                            <span>WordPress</span>
+                        </div>
+                        <div class="tech-icon-item">
+                            <!-- Placeholder for other tool icon -->
+                            <i class="fas fa-toolbox tech-icon-placeholder text-danger"></i>
+                            <span>Other Tool</span>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4">
+
+                    <!-- Tech Stack Row 2: Languages (Matching the inspiration image layout) -->
+                    <p class="mt-4 lead fw-normal">
+                        I architect software that is not just functional, but also eloquent and responsive. Below is a list of languages I have experience with:
+                    </p>
+                    <div class="tech-icon-grid">
+                        <div class="tech-icon-item">
+                            <i class="fab fa-java tech-icon-placeholder icon-java"></i>
+                            <span>Java</span>
+                        </div>
+                        <div class="tech-icon-item">
+                            <i class="fas fa-hashtag tech-icon-placeholder icon-csharp"></i>
+                            <span>C#</span>
+                        </div>
+                        <div class="tech-icon-item">
+                            <i class="fab fa-html5 tech-icon-placeholder icon-html"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="tech-icon-item">
+                            <i class="fab fa-css3-alt tech-icon-placeholder icon-css"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="tech-icon-item">
+                            <i class="fab fa-js-square tech-icon-placeholder icon-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="tech-icon-item">
+                            <i class="fab fa-python tech-icon-placeholder icon-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-icon-item">
+                            <i class="fas fa-terminal tech-icon-placeholder icon-cpp"></i>
+                            <span>C++</span>
+                        </div>
+                    </div>
+
+                    <p class="mt-5 text-end fst-italic text-muted">
+                        But let's dive a bit deeper! Beyond the bits and bytes, my devotion is fueled by the sheer magic of innovation.
+                    </p>
+
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-5">
-        <div class="container">
+        <!-- Projects Section -->
+        <section id="projects" class="py-5">
             <h2 class="text-center section-heading">🚀 Featured Projects</h2>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 
                 <!-- Project Card 1: PuaPal Chatbot -->
                 <div class="col">
                     <div class="card project-card">
-                        <!-- Placeholder Image -->
-                        <!-- The user's original image name: PUAPAL.png -->
-                        <img src="PUAPAL.png" class="card-img-top" alt="PuaPal Chatbot Project Screenshot">
+                        <img src="https://placehold.co/600x400/3F51B5/ffffff?text=AI+Chatbot" class="card-img-top" alt="PuaPal Chatbot Project Screenshot" onerror="this.onerror=null;this.src='https://placehold.co/600x400/3F51B5/ffffff?text=AI+Chatbot';">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">PuaPal Chatbot</h5>
                             <p class="card-text text-muted">Full-Stack Web Development using LLMs</p>
                             <p class="card-text">An AI powered chatbot for answering basic admissions questions for an educational organization.</p>
                             <span class="badge bg-primary me-2">Bootstrap</span>
                             <span class="badge bg-success me-2">Python</span>
-                            <span class="badge badge-tech">Ollama (LLM)</span>
+                            <span class="badge bg-secondary">Ollama (LLM)</span>
                         </div>
-                        <!-- Removed non-functional card-footer links based on original file -->
                     </div>
                 </div>
                 
                 <!-- Project Card 2: Apartment Management System -->
                 <div class="col">
                     <div class="card project-card">
-                        <!-- Placeholder Image -->
-                         <!-- The user's original image name: apartment management system.png -->
-                        <img src="apartment management system.png" class="card-img-top" alt="Apartment Management System Screenshot">
+                        <img src="https://placehold.co/600x400/009688/ffffff?text=CMS+System" class="card-img-top" alt="Apartment Management System Screenshot" onerror="this.onerror=null;this.src='https://placehold.co/600x400/009688/ffffff?text=CMS+System';">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">Apartment Management System</h5>
                             <p class="card-text text-muted">CMS and Analytics</p>
                             <p class="card-text">A program to manage apartment tenants, contracts, vacancies, reservations, and offer data analytics for revenue.</p>
                             <span class="badge bg-warning text-dark me-2">C#</span>
                         </div>
-                        <!-- Removed non-functional card-footer links based on original file -->
                     </div>
                 </div>
 
                 <!-- Project Card 3: Student Information System Redesign -->
                 <div class="col">
                     <div class="card project-card">
-                        <!-- Placeholder Image -->
-                         <!-- The user's original image name: SIS redesign.png -->
-                        <img src="SIS redesign.png" class="card-img-top" alt="Student Information System Redesign Screenshot">
+                        <img src="https://placehold.co/600x400/9b59b6/ffffff?text=UX+Redesign" class="card-img-top" alt="Student Information System Redesign Screenshot" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9b59b6/ffffff?text=UX+Redesign';">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">Student Information System Redesign</h5>
                             <p class="card-text text-muted">Frontend / UX Project</p>
                             <p class="card-text">A complete redesign of an organization's Student Information System focused on improved user experience.</p>
-                            <span class="badge badge-tech">Figma (UX/UI)</span>
+                            <span class="badge bg-info text-dark">Figma (UX/UI)</span>
                         </div>
-                        <!-- Removed non-functional card-footer links based on original file -->
                     </div>
                 </div>
                 
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5 bg-white shadow-sm">
-        <div class="container text-center">
-            <h2 class="section-heading mb-4">🤝 Get In Touch</h2>
-            <p class="lead mb-5">Have a project idea, a job opportunity, or just want to chat about tech? Feel free to reach out!</p>
+        <!-- Contact Section -->
+        <section id="contact" class="py-5">
+            <h2 class="text-center section-heading">🤝 Get In Touch</h2>
+            <p class="lead mb-5 text-center">Have a project idea, a job opportunity, or just want to chat about tech? Feel free to reach out!</p>
             <div class="d-grid gap-3 col-lg-6 mx-auto">
                 <!-- Functional Primary Email Link -->
                 <a href="mailto:ejoZogg@mcm.edu.ph" class="btn btn-primary btn-lg rounded-pill fw-bold shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope-fill me-2" viewBox="0 0 16 16">
-                      <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.31c0 .405.083.792.235 1.149l7.925-4.571L0 4.697zM8 9.585l8 4.613V4.697l-7.925 4.571A3 3 0 0 1 8 9.585z"/>
-                    </svg>
+                    <i class="fas fa-envelope me-2"></i>
                     ejoZogg@mcm.edu.ph (Primary)
                 </a>
                 <!-- Functional Secondary Email Link -->
                  <a href="mailto:zoggethan@gmail.com" class="btn btn-outline-secondary btn-lg rounded-pill shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope me-2" viewBox="0 0 16 16">
-                      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.205zm-.083 6.883a1 1 0 0 0 1-1v-6.931l-5.636 3.424L10 12h4zm-5-3.35L2 11.205V6.383l4.708 2.825zM2 5.383l5.636 3.424L7 12H2a1 1 0 0 1-1-1V6.383z"/>
-                    </svg>
+                    <i class="far fa-envelope me-2"></i>
                     zoggethan@gmail.com (Secondary)
                 </a>
                 <a href="https://www.linkedin.com/in/ethan-james-zogg-936325203/" target="_blank" class="btn btn-outline-dark btn-lg rounded-pill shadow-sm">
+                    <i class="fab fa-linkedin me-2"></i>
                     Connect on LinkedIn
                 </a>
                 <a href="https://github.com/weebeejeebees" target="_blank" class="btn btn-outline-dark btn-lg rounded-pill shadow-sm">
+                    <i class="fab fa-github me-2"></i>
                     Follow on GitHub
                 </a>
             </div>
-        </div>
-    </section>
+        </section>
+        
+    </div> <!-- End portfolio-container -->
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-4 mt-5">
         <div class="container text-center">
-            <p class="m-0">&copy; 2024 Ethan James O. Zogg. Built with HTML & Bootstrap. | <a href="#" class="text-white">Privacy</a></p>
+            <p class="m-0">&copy; 2024 Ethan James O. Zogg. Built with HTML & Bootstrap. | <a href="#" class="text-white text-decoration-none">Privacy</a></p>
         </div>
     </footer>
 
