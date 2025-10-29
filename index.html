@@ -5,42 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ethan James O. Zogg | Developer Portfolio</title>
     <!-- Bootstrap CSS CDN (v5.3) for styling and responsiveness -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Font Awesome for Social Media Icons (used instead of inline SVG for cleaner code) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Custom Styling for improved UI/UX and White-Card Look */
+        /* Custom Styling for Dark Blue Gradient Theme */
         :root {
-            --primary-color: #3F51B5; /* Indigo */
-            --secondary-color: #7986CB;
-            --dark-background: #1e1e2d;
-            --light-background: #f4f6f9;
-            --text-color: #343a40;
-            --accent-color: #009688; /* Teal */
+            --primary-color: #6C63FF; /* Purple accent */
+            --secondary-color: #8A85FF;
+            --dark-background: #0a1128;
+            --darker-background: #050a1c;
+            --card-background: #151f3c;
+            --text-color: #e0e0e0;
+            --text-muted: #a0aec0;
+            --accent-color: #00D4AA; /* Teal accent */
+            --gradient-primary: linear-gradient(135deg, #6C63FF 0%, #8A85FF 100%);
+            --gradient-accent: linear-gradient(135deg, #00D4AA 0%, #00B894 100%);
+            --gradient-dark: linear-gradient(135deg, #0a1128 0%, #1a2a5e 100%);
+            --gradient-blue: linear-gradient(135deg, #0a1128 0%, #1e3a8a 50%, #0a1128 100%);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--light-background); 
-            color: var(--text-color); 
+            background: var(--gradient-blue);
+            color: var(--text-color);
+            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* Container for the main white card that holds all content */
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Container for the main card that holds all content */
         .portfolio-container {
             max-width: 1200px;
-            margin: 20px auto;
-            padding: 30px;
-            background-color: white;
-            border-radius: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+            padding: 40px;
+            background-color: var(--card-background);
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
         }
-        
-        /* Hero Section - now just a part of the white container */
+
+        /* Subtle background pattern */
+        .portfolio-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-primary);
+            z-index: 1;
+        }
+
+        /* Hero Section */
         .hero-section {
-            padding: 0; /* Remove hero padding as it's inside the container */
+            padding: 0;
             margin-bottom: 2rem;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             padding-bottom: 2rem;
         }
 
@@ -49,53 +78,134 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            border: 4px solid var(--primary-color); 
-            box-shadow: 0 0 0 8px rgba(63, 81, 181, 0.1);
+            border: 4px solid transparent;
+            background: var(--gradient-primary) padding-box, var(--gradient-primary) border-box;
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.3);
             object-fit: cover;
             margin: 0 auto 1.5rem;
             display: block;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.4);
+        }
+
+        /* Academic Photo Style */
+        .academic-photo {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            margin: 0 auto;
+            display: block;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .academic-photo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Certificate Photo Style */
+        .certificate-photo {
+            width: 100%;
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .certificate-photo:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
         }
 
         /* Social Icons */
         .social-icons a {
-            color: var(--primary-color);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: white;
             font-size: 1.5rem;
+            border-radius: 50%;
             margin: 0 0.5rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
         }
         .social-icons a:hover {
-            color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(108, 99, 255, 0.4);
+            color: white;
         }
 
         /* Project Card Hover Effect */
         .project-card {
-            border: 1px solid #ddd;
-            border-radius: 0.75rem;
+            border: none;
+            border-radius: 1rem;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             height: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            background: #1e2a4a;
         }
 
         .project-card:hover {
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.2);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-card .card {
+            border: none;
+            height: 100%;
+            transition: all 0.3s ease;
+            background: #1e2a4a;
+        }
+
+        .project-card .card-body {
+            background: #1e2a4a;
+            color: var(--text-color);
         }
 
         /* Section Headings */
         .section-heading {
-            font-size: 2rem;
-            font-weight: 800; 
-            color: var(--dark-background);
-            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-color);
+            margin-bottom: 3rem;
             padding-top: 1rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-heading::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
         }
 
         /* Tech Stack Icon Grid */
         .tech-icon-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: 20px;
             margin-top: 2rem;
         }
         .tech-icon-item {
@@ -103,18 +213,31 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 10px;
-            font-size: 0.75rem;
-            font-weight: 500;
+            padding: 15px 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
             color: var(--text-color);
+            background: #1e2a4a;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
+
+        .tech-icon-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(108, 99, 255, 0.2);
+        }
+
         .tech-icon-placeholder {
-            width: 45px;
-            height: 45px;
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 5px;
+            width: 50px;
+            height: 50px;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
         /* Custom colors for tech icons to visually resemble logos */
         .icon-java { color: #f89820; }
         .icon-aws { color: #FF9900; }
@@ -128,14 +251,233 @@
         .icon-node { color: #339933; }
         .icon-python { color: #3776AB; }
         .icon-cpp { color: #00599C; }
+        .icon-ollama { color: #7E57C2; }
+        .icon-vscode { color: #007ACC; }
+        .icon-vs { color: #5C2D91; }
+        .icon-pycharm { color: #21D789; }
+        .icon-netbeans { color: #1B6AC6; }
 
+        /* Navigation Bar */
+        .navbar {
+            background: rgba(10, 17, 40, 0.95) !important;
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
 
+        .navbar-brand {
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 5px;
+            border-radius: 20px;
+            padding: 8px 15px !important;
+            transition: all 0.3s ease;
+            color: var(--text-color) !important;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--primary-color) !important;
+        }
+
+        /* Buttons */
+        .btn {
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--gradient-primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .btn-outline-secondary {
+            border: 2px solid var(--text-muted);
+            color: var(--text-muted);
+            background: transparent;
+        }
+
+        .btn-outline-secondary:hover {
+            background: var(--text-muted);
+            color: var(--dark-background);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(160, 160, 160, 0.3);
+        }
+
+        /* Badges */
+        .badge {
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        /* List Group */
+        .list-group-item {
+            border: none;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 10px !important;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            background: #1e2a4a;
+            color: var(--text-color);
+        }
+
+        .list-group-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker-background) !important;
+            padding: 30px 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Section spacing */
+        section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-background);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Text colors */
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        .lead {
+            color: var(--text-color);
+        }
+
+        /* Card text colors */
+        .card-text {
+            color: var(--text-color);
+        }
+
+                /* Certificate Cards */
+        .certificate-card {
+            background: #1e2a4a;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            border: none;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.2);
+        }
+
+        .certificate-card .card-body {
+            background: #1e2a4a;
+            color: var(--text-color);
+            padding: 1.5rem;
+        }
+
+        .certificate-card .card-text {
+            color: var(--text-color);
+        }
+
+        .certificate-card .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .portfolio-container {
+                padding: 25px;
+                margin: 20px 10px;
+            }
+            
+            .section-heading {
+                font-size: 2rem;
+            }
+            
+            .tech-icon-grid {
+                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+                gap: 15px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+
+            .certificate-header {
+                flex-direction: column;
+            }
+
+            .certificate-badge {
+                margin-top: 0.5rem;
+                align-self: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#home">
                 <span style="color: var(--accent-color);">&lt;</span>EthanZogg<span style="color: var(--accent-color); ">/&gt;</span>
@@ -149,7 +491,13 @@
                         <a class="nav-link active" aria-current="page" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#academic">Academic</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#certificates">Certificates</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
@@ -159,27 +507,25 @@
         </div>
     </nav>
     
-    <!-- Main Portfolio Content Container (White Card) -->
-    <div class="portfolio-container">
+    <!-- Main Portfolio Content Container -->
+    <div class="portfolio-container fade-in">
 
-        <!-- Hero Section (Matches Reference Image Layout) -->
+        <!-- Hero Section -->
         <header id="home" class="hero-section">
             <div class="row">
                 
                 <!-- Left Column: Profile Picture and Socials -->
                 <div class="col-lg-4 text-center">
-                    <img src="linkedin.jpg" 
+                    <img src="whitebg.png" 
                          class="profile-photo shadow-lg" 
-                         alt="Placeholder for Profile Photo - Replace this URL with your face shot!">
+                         alt="Ethan Zogg Profile Photo">
                     
-                    <h5 class="fw-bold mb-3">Ethan James O. Zogg</h5>
+                    <h5 class="fw-bold mb-3" style="color: var(--primary-color);">Ethan James O. Zogg</h5>
 
                     <div class="social-icons mb-4">
                         <a href="https://www.linkedin.com/in/ethan-james-zogg-936325203/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         <a href="https://github.com/weebeejeebees" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                         <!-- Add other social links as desired -->
-                        <a href="#" target="_blank" title="Twitter/X"><i class="fab fa-twitter"></i></a>
-                        <a href="#" target="_blank" title="Spotify"><i class="fab fa-spotify"></i></a>
                     </div>
                 </div>
 
@@ -188,10 +534,10 @@
                     <h1 class="h2 fw-bolder mb-3" style="color: var(--primary-color);">Hello World, and welcome to my portfolio!</h1>
                     
                     <p class="lead mb-4">
-                        I am **Ethan Zogg**, your coding enthusiast. I am passionate about **Web Technologies and AI**, specializing in modern web and application development. Below is a toolbox of technologies I have experience developing with:
+                        I am Ethan Zogg, your backend developer and project organizer. I am passionate about optimizing workflows and AI, specializing in modern web and application development. Below is a toolbox of technologies I have experience developing with:
                     </p>
 
-                    <!-- Tech Stack Row 1: Core Toolbox (Matching the inspiration image layout) -->
+                    <!-- Tech Stack Row 1: Core Toolbox -->
                     <h5 class="fw-bold mb-3" style="color: var(--accent-color);">🛠️ Core Toolbox & Frameworks</h5>
                     <div class="tech-icon-grid">
                         <div class="tech-icon-item">
@@ -200,33 +546,38 @@
                         </div>
                         <div class="tech-icon-item">
                             <i class="fab fa-android tech-icon-placeholder icon-android"></i>
-                            <span>Android</span>
+                            <span>Android Studio</span>
                         </div>
                         <div class="tech-icon-item">
-                            <i class="fas fa-microchip tech-icon-placeholder icon-spring"></i>
-                            <span>Spring Boot</span>
+                            <img src="ollama.png" class="tech-icon-placeholder" alt="Ollama" style="width: 45px; height: 45px;">
+                            <span>Ollama</span>
                         </div>
-                         <div class="tech-icon-item">
-                            <i class="fab fa-node-js tech-icon-placeholder icon-node"></i>
-                            <span>Node.js</span>
+                        <div class="tech-icon-item">
+                            <img src="vsc.png" class="tech-icon-placeholder" alt="VS Code" style="width: 45px; height: 45px;">
+                            <span>VS Code</span>
+                        </div>
+                        <div class="tech-icon-item">
+                            <img src="vs.png" class="tech-icon-placeholder" alt="Visual Studio" style="width: 45px; height: 45px;">
+                            <span>Visual Studio</span>
+                        </div>
+                        <div class="tech-icon-item">
+                            <img src="pycharm.png" class="tech-icon-placeholder" alt="PyCharm" style="width: 45px; height: 45px;">
+                            <span>PyCharm</span>
+                        </div>
+                        <div class="tech-icon-item">
+                            <img src="netbeans.png" class="tech-icon-placeholder" alt="NetBeans" style="width: 45px; height: 45px;">
+                            <span>NetBeans</span>
                         </div>
                         <div class="tech-icon-item">
                             <i class="fab fa-wordpress tech-icon-placeholder icon-wp"></i>
                             <span>WordPress</span>
                         </div>
-                        <div class="tech-icon-item">
-                            <!-- Placeholder for other tool icon -->
-                            <i class="fas fa-toolbox tech-icon-placeholder text-danger"></i>
-                            <span>Other Tool</span>
-                        </div>
+                       
                     </div>
                     
-                    <hr class="my-4">
+                    <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
 
-                    <!-- Tech Stack Row 2: Languages (Matching the inspiration image layout) -->
-                    <p class="mt-4 lead fw-normal">
-                        I architect software that is not just functional, but also eloquent and responsive. Below is a list of languages I have experience with:
-                    </p>
+                    <!-- Tech Stack Row 2: Languages -->
                     <div class="tech-icon-grid">
                         <div class="tech-icon-item">
                             <i class="fab fa-java tech-icon-placeholder icon-java"></i>
@@ -258,66 +609,158 @@
                         </div>
                     </div>
 
-                    <p class="mt-5 text-end fst-italic text-muted">
-                        But let's dive a bit deeper! Beyond the bits and bytes, my devotion is fueled by the sheer magic of innovation.
-                    </p>
-
                 </div>
             </div>
         </header>
 
+        <!-- Academic Background Section -->
+        <section id="academic" class="py-5">
+            <h2 class="section-heading">🎓 Academic Background</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                    <!-- Placeholder for academic photo -->
+                    <img src="linkedin.jpg" 
+                         class="academic-photo" 
+                         alt="Academic Background">
+                </div>
+                <div class="col-lg-8">
+                    <h3 class="fw-bold mb-3" style="color: var(--primary-color);">Education</h3>
+                    <div class="mb-4">
+                        <h5 class="fw-bold">Mapúa Malayan Colleges Mindanao</h5>
+                        <p class="text-muted mb-1">Bachelor of Science in Information Systems</p>
+                        <p class="text-muted">Expected Graduation: 2026</p>
+                        <p>Currently pursuing a degree in Information Systems with a focus on software development, AI, and system optimization. Actively involved in various academic projects and extracurricular activities related to technology. 
+                            I would like to extend my sincere gratitude to Mapúa Malayan Colleges Mindanao for providing a robust and forward-thinking Information Systems program. The curriculum has been instrumental in equipping me with both the theoretical knowledge and practical skills essential for today's dynamic tech industry. The unwavering support from my professors and the university's commitment to academic excellence have been pivotal in shaping me into a capable and confident developer, ready to tackle real-world challenges.</p>
+                    </div>
+                    
+                    <h5 class="fw-bold mt-4 mb-3" style="color: var(--accent-color);">Academic Achievements</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Dean's Lister
+                            <span class="badge bg-primary rounded-pill">Multiple Semesters</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Programming Competition Participant
+                            <span class="badge bg-success rounded-pill">2023</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Academic Scholarship Recipient
+                            <span class="badge bg-warning text-dark rounded-pill">2022-Present</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <!-- Projects Section -->
         <section id="projects" class="py-5">
-            <h2 class="text-center section-heading">🚀 Featured Projects</h2>
+            <h2 class="section-heading">🚀 Featured Projects</h2>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 
                 <!-- Project Card 1: PuaPal Chatbot -->
                 <div class="col">
-                    <div class="card project-card">
-                        <img src="PUAPAL.png" class="card-img-top" alt="PuaPal Chatbot Project Screenshot" onerror="this.onerror=null;this.src='https://placehold.co/600x400/3F51B5/ffffff?text=AI+Chatbot';">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">PuaPal Chatbot</h5>
-                            <p class="card-text text-muted">Full-Stack Web Development using LLMs</p>
-                            <p class="card-text">An AI powered chatbot for answering basic admissions questions for an educational organization.</p>
-                            <span class="badge bg-primary me-2">Bootstrap</span>
-                            <span class="badge bg-success me-2">Python</span>
-                            <span class="badge bg-secondary">Ollama (LLM)</span>
+                    <a href="https://github.com/JGonzales0857/Puapal-RAG-Chatbot" target="_blank" class="project-card">
+                        <div class="card">
+                            <img src="PUAPAL.png" class="card-img-top" alt="PuaPal Chatbot Project Screenshot">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">PuaPal Chatbot</h5>
+                                <p class="card-text text-muted">Full-Stack Web Development using LLMs</p>
+                                <p class="card-text">An AI powered chatbot for answering basic admissions questions for an educational organization.</p>
+                                <span class="badge bg-primary me-2">Bootstrap</span>
+                                <span class="badge bg-success me-2">Python</span>
+                                <span class="badge bg-secondary">Ollama (LLM)</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 
                 <!-- Project Card 2: Apartment Management System -->
                 <div class="col">
-                    <div class="card project-card">
-                        <img src="apartment management system.png" class="card-img-top" alt="Apartment Management System Screenshot" onerror="this.onerror=null;this.src='https://placehold.co/600x400/009688/ffffff?text=CMS+System';">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Apartment Management System</h5>
-                            <p class="card-text text-muted">CMS and Analytics</p>
-                            <p class="card-text">A program to manage apartment tenants, contracts, vacancies, reservations, and offer data analytics for revenue.</p>
-                            <span class="badge bg-warning text-dark me-2">C#</span>
+                    <a href="https://github.com/weebeejeebees/Apartment-Manager-EJ-RESIDENCES--in-Csharp-for-SAD" target="_blank" class="project-card">
+                        <div class="card">
+                            <img src="apartment management system.png" class="card-img-top" alt="Apartment Management System Screenshot">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Apartment Management System</h5>
+                                <p class="card-text text-muted">CMS and Analytics</p>
+                                <p class="card-text">A program to manage apartment tenants, contracts, vacancies, reservations, and offer data analytics for revenue.</p>
+                                <span class="badge bg-warning text-dark me-2">C#</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <!-- Project Card 3: Student Information System Redesign -->
                 <div class="col">
-                    <div class="card project-card">
-                        <img src="SIS redesign.png" class="card-img-top" alt="Student Information System Redesign Screenshot" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9b59b6/ffffff?text=UX+Redesign';">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Student Information System Redesign</h5>
-                            <p class="card-text text-muted">Frontend / UX Project</p>
-                            <p class="card-text">A complete redesign of an organization's Student Information System focused on improved user experience.</p>
-                            <span class="badge bg-info text-dark">Figma (UX/UI)</span>
+                    <a href="https://www.figma.com/design/C0nDj1jQ9JjcetlTN8lYwA/SIS-Redesign?node-id=0-1&t=tmqrumi427VAjymg-1" target="_blank" class="project-card">
+                        <div class="card">
+                            <img src="SIS redesign.png" class="card-img-top" alt="Student Information System Redesign Screenshot">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Student Information System Redesign</h5>
+                                <p class="card-text text-muted">Frontend / UX Project</p>
+                                <p class="card-text">A complete redesign of an organization's Student Information System focused on improved user experience.</p>
+                                <span class="badge bg-info text-dark">Figma (UX/UI)</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 
             </div>
         </section>
 
+                <!-- Certificates Section -->
+        <section id="certificates" class="py-5">
+            <h2 class="section-heading">🏆 Certificates & Achievements</h2>
+            <p class="lead mb-5 text-center">A showcase of my most recent professional certifications and academic achievements.</p>
+            
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <!-- Certificate 1: AWS Academy Graduate -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm certificate-card">
+                        <img src="AWS.jpg" class="certificate-photo card-img-top" alt="AWS Academy Certificate">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">AWS Academy Graduate - Cloud Developing</h5>
+                            <p class="card-text text-muted">Amazon Web Services</p>
+                            <p class="card-text">Designed to help students gain technical expertise in development using cloud technologies and prepare them to take the AWS Certified Developer – Associate level AWS Certification exam.</p>
+                            <small class="text-muted">Issued: September 2024</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certificate 2: Information Systems Auditing -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm certificate-card">
+                        <img src="ISACA.jpg" class="certificate-photo card-img-top" alt="Information Systems Auditing Certificate">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Information Systems Auditing, Controls and Assurance</h5>
+                            <p class="card-text text-muted">The Hong Kong University of Science and Technology</p>
+                            <p class="card-text">Gain expertise in identifying information systems risks and implementing effective controls to mitigate them. The curriculum also provides a comprehensive understanding of Information Systems (IS) audit procedures and how to integrate them across all phases of the Systems Development Life Cycle (SDLC).</p>
+                            <small class="text-muted">Issued: August 2025</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certificate 3: Fundamentals of Business Analysis -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm certificate-card">
+                        <img src="FBA.jpg" class="certificate-photo card-img-top" alt="Business Analysis Certificate">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Fundamentals of Business Analysis</h5>
+                            <p class="card-text text-muted">IBM and Coursera</p>
+                            <p class="card-text">Validates the earner's foundational expertise in business analysis, including core processes, key responsibilities, and the application of industry-standard tools for requirements gathering, prioritization, and process visualization and improvement.</p>
+                            <small class="text-muted">Issued: October 2025</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="https://www.linkedin.com/in/ethan-james-zogg-936325203/details/certifications/" class="btn btn-outline-primary btn-lg rounded-pill">View All Certificates</a>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section id="contact" class="py-5">
-            <h2 class="text-center section-heading">🤝 Get In Touch</h2>
+            <h2 class="section-heading">🤝 Get In Touch</h2>
             <p class="lead mb-5 text-center">Have a project idea, a job opportunity, or just want to chat about tech? Feel free to reach out!</p>
             <div class="d-grid gap-3 col-lg-6 mx-auto">
                 <!-- Functional Primary Email Link -->
@@ -330,11 +773,11 @@
                     <i class="far fa-envelope me-2"></i>
                     zoggethan@gmail.com (Secondary)
                 </a>
-                <a href="https://www.linkedin.com/in/ethan-james-zogg-936325203/" target="_blank" class="btn btn-outline-dark btn-lg rounded-pill shadow-sm">
+                <a href="https://www.linkedin.com/in/ethan-james-zogg-936325203/" target="_blank" class="btn btn-outline-primary btn-lg rounded-pill shadow-sm">
                     <i class="fab fa-linkedin me-2"></i>
                     Connect on LinkedIn
                 </a>
-                <a href="https://github.com/weebeejeebees" target="_blank" class="btn btn-outline-dark btn-lg rounded-pill shadow-sm">
+                <a href="https://github.com/weebeejeebees" target="_blank" class="btn btn-outline-primary btn-lg rounded-pill shadow-sm">
                     <i class="fab fa-github me-2"></i>
                     Follow on GitHub
                 </a>
@@ -351,6 +794,61 @@
     </footer>
 
     <!-- Bootstrap JS CDN (Bundle with Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <script>
+        // Intersection Observer for section animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.padding = '10px 0';
+                    navbar.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.3)';
+                } else {
+                    navbar.style.padding = '15px 0';
+                    navbar.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
+                }
+            });
+            
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
